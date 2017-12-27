@@ -1,0 +1,1197 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage[charter]{mathdesign}
+\usepackage{hyperref} 
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\begin{document}
+\title{OTTICA DIFFRATTIVA}
+
+\section{INTRODUZIONE ALL'OTTICA DIFFRATTIVA}
+\begin{equation}
+\textbf{E}(\textbf{r}, t)= \textbf{E}( \textbf{r} ) e^{-i \omega t}
+\end{equation}
+\begin{equation}
+\nabla ^{2}\textbf{E} (\textbf{r}) + (\frac{\omega}{c})^{2}\frac{2}{\varepsilon}\textbf{E} (\textbf{r})=0
+\end{equation}
+
+\textbf{Si potrebbe risolvere l'equazione di Helmoltz con le appropriate condizioni al contorno, ma non è facile quindi si deve cercare una seconda via.}
+
+Analizziamo ad esempio un fronte d'onda piana che si propaga attraverso un'apertura; Se usassimo ancora l'ottica geometrica troveremmo che passano solo i raggi centrali mentre gli altri no.
+
+Se l'apertura è molto grande rispetto alla lunghezza d'onda le deflessioni sono meno evidenti e il fronte d'onda è ancora praticamente piano. Se però riduciamo l'apertura questa approssimazione non è più accettabile.
+
+Andremo a studiare il sistema per aperture abbastanza piccole da avere diffrazione evidente, ma sufficentemente grande da non variare la polarizzazione del campo entrante lasciando l'equazione di Helmoltz scalare.
+
+\section{OTTICA DIFFRATTIVA IN REGIME SCALARE}
+Ipotizziamo di essere nel vuoto 
+\begin{equation}
+\varepsilon = \varepsilon_{0}
+\end{equation}
+chiamo il campo elettrico U(P) anzichè \textbf{E} (\textbf{r}) mettendo in evidenza il fatto di essere in approssimazione scalare, cioè considero solo la funzione dell'ampiezza del campo nella direzione di polarizzazione.
+
+\begin{equation}
+\nabla ^{2}U(P) + (\frac{\omega}{c})^{2}\frac{2}{\varepsilon _{0}}U(P)=0
+\end{equation}
+
+Nell'ottica diffrattiva studiamo tutto ciò che ha dimensione finita e dell'ordine della lunghezza d'onda della radiazione.
+
+Prendiamo un sistema con apertura di forma non definita attraverso la quale passa un'onda polarizzata linearmente: come sarà il campo dopo l'apertura?
+
+\textbf{Dovrei risolvere l'equazione di Helmoltz con le apposite condizioni al contorno e quindi usare le funzioni di Green}.
+
+I primi a formulare la seguente equazione sono Kirchoff, Raleigh, Sommerfield
+
+\begin{equation}
+U(P_{0}) = \frac{1}{i\lambda} \iint_\sigma U(P_{1}) \frac{e^{i k r_{01}}}{r_{01}} cos(\textbf{n} ,\textbf{r})dS
+\end{equation}
+
+\begin{equation}
+k=\frac{\omega}{c}  = \frac{2\pi}{\lambda}
+\end{equation}
+
+Esiste una strada alternativa che risulta solo dopo avere visto la soluzione di Raleigh Sommerfield: da un punto di vista matematico ci accorgiamo di avere in mano delle onde sferiche, che in realtà non esistono, poichè non abbiamo una sorgente che le produca ma solo un'apertura illuminata.
+
+\textbf{Principio di Huygens-Fresnel: ciascun punto dell'apertura è visto come sorgente di ondine (wavelets) sferiche secondarie, la cui sovrapposizione da il campo dopo l'apertura}.
+
+Si tratta di un potente artificio matematico che scompone il campo nella sovrapposizione di tante funzioni elementari.
+
+Scriveremo il campo di partenza come somma di un set di onde semplici la cui sovrapposizione alla fine ci garantisce di trovare il campo complessivo.
+Come è possibile trovare un altro set di funzioni semplici da usare come base per esprimere la funzione di ampiezza spaziale U(P).
+
+\subsection{TRASFORMATA DI FOURIER}
+
+\begin{equation}
+G(\omega)=\mathscr{F}\{g(t)\} =\int_{-\infty}^{\infty} g(t) e^{-i\omega t}dt
+\end{equation}
+	
+\begin{equation}
+g(t)= \mathscr{F}^{-1} 	 \{G(\omega)\} =\frac{1}{2\pi}\int_{-\infty}^{\infty} G(\omega) e^{i\omega t}d\omega
+\end{equation}
+Scriviamo la g(t) come sovrapposizione di funzioni seno e coseno a diverse frequenze $ \omega $ (esponenziali complessi) ciascuna delle quali con un coefficiente nella combinazione data dalla trasformata G($\omega$) della funzione g(t) stessa. Da questa interpretazione si da a G($\omega$) il nome di \textbf{spettro in frequenza}.
+
+Possiamo andare ad applicare lo stesso concetto a variabili spaziali utilizzando una \textbf{TDF spaziale bidimensionale}: 
+
+\begin{equation} G(k_{x}, k_{y})=\mathscr{F} 	 \{g(x,y)\} =\iint_{-\infty}^{\infty} g(x,y) e^{-i( k_{x} x +k_{y} y)}dxdy 
+\end{equation}
+
+In pratica quello che stiamo facendo, in un modo analogo al caso di una funzione del tempo, è scomporre la funzione di due variabili g(x,y) in una sovrapposizione di onde piane con componenti dei vettori d'onda $(k_x, k_y)$ che indicano \textbf{l'angolo d'inclinazione} con cui le onde escono dall'apertura (infatti il vettore d'onda di un'onda piana indica la sua direzione di propagazione nello spazio), ciascuna delle quali è ancora pesata da G($k_x, k_y$). Per questo motivo la G($k_x, k_y$) si chiama \textbf{spettro angolare}.
+$k_x=2\pi f_x$ e $k_y=2\pi f_y$; $f_x ed f_y$ sono dette frequenze spaziali.
+
+L'esponenziale ci ricorda la parte spaziale di un'onda piana $e^{-i(\textbf{k,r})}$ che si propaga nello spazio con $k_{x},k_{y},k_{z}$a z=0.
+
+Vediamo quindi g(x,y) non più come una funzione generica ma come il campo U(x,y) in corrispondenza dell'apertura che indichiamo come U($x_1,y_1$).
+
+$A_{1}$ è la trasformata del campo U($x_1,y_1$), quindi:
+
+\begin{equation}
+U(x_{1},y_{1})=\frac{1}{(2\pi)^{2}}\iint_{- \infty}^{\infty} A_{1}(k_{x},k_{y}) e^{i( k_{x} x +k_{y} y +k_{z} 0)}dk_{x}dk_{y} 		
+\end{equation}
+valutata giustamente per z=0.
+
+Abbiamo un'onda elettromagnetica piana ($ e^{i \textbf{k} \textbf{r}}$) ovviamente  $k ^{2} = k_{x} ^{2} +k_{y} ^{2} +k_{z}^{2} \longrightarrow k_{z}=\sqrt{k ^{2} - k_{x} ^{2} - k_{y} ^{2}}$ 
+
+Il campo nell'apertura $U(x_{1},y_{1})$, che è noto, è visualizzabile come sovrapposizione di onde piane in partenza da z=0, pesate dallo spettro angolare $A_{1}(k_{x},k_{y})$ anch'esso noto.
+
+Sappiamo che l'equazione di Helmoltz è lineare, quindi, se sapessimo come una di queste onde si propaga, potremmo trovare il campo ad ogni z lasciando propagare le onde piane e sovrapponendole nuovamente a z scelto.
+
+\begin{equation}
+U(x_{0},y_{0})=\frac{1}{(2\pi)^{2}}\iint_{-\infty}^{\infty} A_{0}(k_{x},k_{y} ) e^{i( k_{x} x_{0} +k_{y} y_{0})}dk_{x}dk_{y} 				
+\end{equation}
+Se conoscessi $A_{0}$ potrei antitrasformarlo e ricavare il campo $U(x_{0},y_{0})$, nel generico punto z dello spazio.
+Il problema dunque è: \textbf{noto lo spettro di partenza $A_{1}$, come si propaga questo, e come ricavo $A_{0}$}?
+
+La sorgente non viene più vista come sorgente di onde sferiche come per Huygens ma di onde piane.
+
+In termini matematici onde sferiche $\longrightarrow$ cos(\textbf{n,r})
+
+onde piane $\longrightarrow  e^{i \textbf{r} \textbf{k}}$
+
+Possiamo però vedere $U(x_{0},y_{0})$ come
+\begin{equation}
+U(x_{0},y_{0})=\frac{1}{(2\pi)^{2}}\iint_{-\infty}^{\infty} A_{1}(k_{x},k_{y}) e^{i( k_{x} x_{0} +k_{y} y_{0} +k_{z} z)}dk_{x}dk_{y}
+\end{equation}
+dove si è aggiunto il termine di propagazione lungo l'asse z nell'esponenziale.
+Semplicemente tirando fuori dall'esponenziale questo ultimo termine e uguagliando la (11) e la (12): 
+\textbf{lo spettro angolare di arrivo è uguale a quello di partenza, moltiplicato per un termine di sfasamento, che è diverso a seconda dell'inclinazione delle onde piane}.
+\begin{equation}
+A_{0}(k_{x},k_{y})=A_{1}(k_{x},k_{y})e^{ik_{z}z}
+\end{equation}
+Inoltre $k_{z}$ è funzione di $k_{x}$ e $k_{y}$:
+\begin{equation}
+k_{z}=\sqrt{k ^{2} - k_{x} ^{2} - k_{y} ^{2}}
+\end{equation}
+\begin{equation}
+ A_{0}(k_{x},k_{y})=A_{1}(k_{x},k_{y}) e^{i k_{z} z} = A_{1}(k_{x},k_{y}) e^{i k \sqrt{1 - \frac{ k_{x} ^{2} + k_{y} ^{2}}{k^{2}}} z}
+\end{equation}
+Ora facciamo un'ipotesi che ci permette di semplificare la (15)
+
+\textbf{Ipotesi di ottica parassiale (onde poco inclinate)}:
+se l'apertura non è troppo piccola, non è in grado di modificare troppo lo spettro angolare del campo che ne esce e renderlo frastagliato, cioè di inclinare molto le onde che entravano piane (infatti funzioni "frastagliate" anche nel tempo, pensando alla serie di Fourier, sono ottenibili solo a patto di usare frequenze alte, che nel caso spaziale significa inclinazioni), allora $k_{x}$ e $k_{y}$ sono ragionevolmente piccoli.
+Matematicamente:
+\begin{equation}
+k_{x},k_{y} << k    
+\end{equation}
+per Taylor quindi: $k_{z}=k \sqrt{1 - \frac{ k_{x} ^{2} + k_{y} ^{2} }{ k^{2} }}\approx k +\frac{1}{2} \frac{k_{x} ^{2} + k_{y} ^{2}}{k}$
+
+Possiamo vedere il termine $ e^{i (\frac{k_{x} ^{2} + k_{y} ^{2} }{2k})z} $ come un filtro in frequenza che modifica la fase delle componenti dello spettro durante la propagazione
+\begin{equation}
+A_{0}(k_{x},k_{y})=A_{1}(k_{x},k_{y}) e^{i k z}e^{i (\frac{k_{x} ^{2} + k_{y} ^{2} }{2k})z}
+\end{equation}
+
+
+\subsection{EQUIVALENZA TRA LE DUE FORMULAZIONI}
+Formulazione onde piane(1):
+\begin{equation}
+U(x_{0},y_{0})=\frac{1}{(2\pi)^{2}}\iint_{-\infty}^{\infty} A_{1}(k_{x},k_{y} ) e^{i( k_{x} x_{0} +k_{y} y_{0} +k_{z} z)}dk_{x}dk_{y} 				
+\end{equation}
+Formulazione di Raleigh-Sommerfield onde sferiche(2):
+\begin{equation}
+U(P_{0}) = \frac{1}{i\lambda} \iint_\sigma U(P_{1}) \frac{e^{i k r_{01}}}{r_{01}} cos(\textbf{n} , \textbf{ r})dS
+\end{equation}
+Approssimazione parassiale per la (2):
+$ r_{01}\approx z, cos(\textbf{n,r})\approx1 $ per il termine esponenziale non si può sostituire $r_{01}$ con z, ma:
+\begin{equation}
+r_{01} = \sqrt{(x_{0} - x_{1})^{2} + (y_{0}- y_{1})^{2} + z^{2}}
+\end{equation}
+\begin{equation}
+r_{01}= z \sqrt{1+\frac{(x_{0} - x_{1})^{2} + (y_{0}- y_{1})^{2}}{z^{2}}}\approx z ( 1 + \frac{(x_{0} - x_{1})^{2} + (y_{0}- y_{1})^{2}}{2 z^{2}})
+\end{equation}
+e quindi sostituendo a P le sue coordinate ed a $\sigma$ l' integrazione su tutto il piano sapendo che oltre $\sigma$ vale zero (2) potrà essere scritta come:
+
+\begin{equation}
+U(x_{0}, y_{0})= \frac{e^{i k z}  }{i \lambda z} \iint_{-\infty}^{\infty} U(x_{1}, y_{1}) e^{i\frac{k}{2z} [(x_{0}- x_{1})^{2} + (y_{0}- y_{1})^{2}]}dx_{1}dy_{1}
+\end{equation}
+Approssimazione parassiale per la (1): $k_{x},k_{y} << k \longrightarrow k \sqrt{1 - \frac{ k_{x} ^{2} + k_{y} ^{2} }{ k^{2} }}\approx k +\frac{1}{2} \frac{k_{x} ^{2} + k_{y} ^{2}}{k}$
+
+\begin{equation}
+U(x_{0},y_{0})=\frac{1}{(2\pi)^{2}}\iint_{-\infty}^{\infty} A_{1}(k_{x},k_{y} )  e^{i k z} e^{i \frac{k_{x}^{2}+k_{y}^{2}}{2k} z} e^{i( k_{x} x_{0} +k_{y} y_{0} )} dk_{x}dk_{y} 				
+\end{equation}
+L'antitrasformata del prodotto di due trasformate è l'integrale di convoluzione
+
+\begin{equation}
+A_{1}(k_{x}, k_{y})\longrightarrow{\mathscr{F}^{-1} }\longrightarrow U(x_{1}, y_{1})
+\end{equation}
+
+\begin{equation}
+e^{i k z} e^{i \frac{k_{x}^{2}+ k_{y}^{2}}{2k} z}\longrightarrow\mathscr{F}^{-1} \longrightarrow  \frac{e^{i k z}}{i \lambda z}  e^{i \frac{k}{2z} (x^{2}+ y^{2})}
+\end{equation}
+
+\begin{equation}
+U(x_{0}, y_{0})= \frac{e^{i k z} }{i \lambda z}  \iint_{-\infty}^{\infty} U(x_{1}, y_{1}) e^{\frac{k}{2z} [(x_{0}- x_{1})^{2} + (y_{0}- y_{1})^{2}]}dx_{1}dy_{1}
+\end{equation}
+che risulta identica alla (21)
+Se adesso svolgiamo i quadrati all'esponente risulta:
+
+\begin{equation}
+U(x_{0}, y_{0})= \frac{e^{i k z} }{i \lambda z}e^{i\frac{k}{2z}(x_{0}^{2}+y_{0}^2)} \iint_{-\infty}^{\infty} U(x_{1}, y_{1})e^{i\frac{k}{2z}(x_{1}^{2}+y_{1}^2)}e^{-i\frac{k}{z}(x_{0}x_{1}+y_{0}y_{1})}dx_{1}dy_{1}
+\end{equation}
+Nell'esponente con il segno meno una volta posto $k=\frac{2\pi}{\lambda}$si possono riconoscere
+$f_{x}=\frac{x_{0}}{\lambda z}$,
+$f_{y}=\frac{y_{0}}{\lambda z}$
+\begin{equation}
+e^{-i\frac{k}{z}(x_{0}x_{1}+y_{0}y_{1})}=e^{-i(2\pi f_{x}x_{1}+2\pi f_{y}y_{1})} 
+\end{equation}
+che è il classico termine della trasformata di Fourier bidimensionale
+
+\begin{equation}
+U(x_{0}, y_{0})= \frac{e^{i k z} }{i \lambda z}e^{i\frac{k}{2z}(x_{0}^{2}+y_{0}^2)}\mathscr{F}[U(x_{1}, y_{1})e^{i\frac{k}{2z}(x_{1}^{2}+y_{1}^2)}]
+\end{equation}
+\textbf{Il campo nel piano d'arrivo è proporzionale}, tramite termini costanti che dipendono dalle coordinate del piano di arrivo,\textbf{ ad un integrale che è simile alla trasformata di Fourier del campo sull'apertura}, non è esattamente la sua trasformata per il termine quadratico che moltiplica $U(x_{1},y_{1})$.
+
+\textbf{SE} non ci fosse il termine quadratico all'interno dell'integrale l'intensità del campo sul piano d'arrivo, proporzionale al modulo quadro del campo, sarebbe uguale al modulo quadro della trasformata di fourier nell'apertura.
+\begin{equation}
+I(x_{0}, y_{0}) = |\iint_{\infty}^{\infty} U(x_{1}, y_{1}) e^{-\frac{k}{2z} [x_{0} x_{1} + y_{0} y_{1}]}dx_{1}dy_{1}|^{2} = |\mathscr{F}[U(x_{1}, y_{1})]| ^{2}
+\end{equation}
+Lo scopo che ci guida adesso è dunque quello di sbarazzarci del termine quadratico
+\begin{equation}
+e^{i \frac{k }{2z}( x_{1}^{2}  +  y_{1}^{2} )}
+\end{equation}
+se $\frac{k }{2z}( x_{1}^{2}  +  y_{1}^{2} )<<1$
+cioè $z>>\frac{k }{2}( x_{1}^{2}  +  y_{1}^{2} )$ allora il termine esponenziale può essere trascurato, condizione che equivale a porsi a grande distanza dall'apertura rispetto alle dimensioni dell'apertura stessa.
+
+\textbf{Approssimazione di Fraunhofer}.
+Nel caso in cui sia rispettata la condizione dell'approssimazione di Fraunhofer sul piano d'arrivo quello che si ha è (a parte costanti moltiplicative) la trasformata di Fourier esatta del campo sull'apertura. Ovviamente questa semplificazione di calcolo si paga con il fatto di dover disporre di una grande distanza.
+
+Posso associare ad ogni punto del piano di arrivo una coppia di frequenze$f_{x}=\frac{x_{0}}{\lambda z}$,$f_{y}=\frac{y_{0}}{\lambda z}$ che mi danno la mappa spettrale del campo, ovvero mi fanno capire quali sarebbero le inclinazioni delle onde piane (che non esistono, sono solo un artificio matematico di calcolo) che compongono il campo sovrapponendosi nel piano di arrivo dopo aver cambiato direzione a causa dell'apertura.
+
+È quindi possibile associare alla coppia di assi $(x_{0}, y_{0})$ la coppia $(f_{x}, f_{y})$ che corrispondono allo \textbf{spettro angolare}. Se faccio il modulo quadro della funzione d'arrivo trovo lo \textbf{spettro in potenza} che corrisponde all'\textbf{intensità} del campo sul piano d'arrivo.
+
+L'ottica diffrattiva in regime parassiale è dunque in grado di fare un' operazione matematica: la trasformata di Fourier bidimensionale
+
+Se andiamo a grande distanza dalla fenditura(approssimazione di Fraunhofer) andiamo a studiare la propagazione del campo come composto da onde piane(stessa cosa per la soluzione di Raleigh Sommerfield)
+
+A grande distanza la soluzione sarà
+
+\begin{equation}
+U(x_{0}, y_{0})= \frac{1}{i \lambda z} e^{i k z} e^{i \frac{k (x_{0} ^ {2} + y_{0}^{2})}{2 z}}  \iint_{\infty}^{\infty} U(x_{1}, y_{1}) e^{i (k_{x} x_{1} + k_{y} y_{1}) } dx_{1}dy_{1}
+\end{equation}
+
+e l'intensità sarà quindi:
+
+\begin{equation}
+I(x_{0}, y_{0})=|U(x_{0}, y_{0})|^{2}= \frac{|\mathscr{F} \{ U(x_{1},y_{1})\}|^{2}}{\lambda^{2} z^{2}}
+\end{equation}
+
+%\subsection{esempi}%
+
+%non lo copio perchè sono TDF banali!%
+
+
+poniamo $t(x_{1}, y_{1}) =U(x_{1}, y_{1})$
+
+e ipotizziamo il caso di un apertura dentro la quale c'è un reticolo di trasmissione che varia come un cos
+\begin{equation}
+t(x_{1}, y_{1}) = [\frac{1}{2} + \frac{m}{2} cos(2 \pi f_{0} x_{1})] rect(\frac{x_{1}}{l_{x}}) rect(\frac{y_{1}}{l_{y}})
+\end{equation}
+
+$a = [\frac{1}{2} + \frac{m}{2} cos(2 \pi f_{0} x_{1})]$ è dovuto al reticolo di trasmissione 
+
+$b = rect(\frac{x_{1}}{l_{x}}) rect(\frac{y_{1}}{l_{y}})$ all'apertura, in questo caso rettangolare di lato $l_{x} l_{y}$ 
+\begin{equation}
+\mathscr{F} \{ t(x_{1},y_{1})\} = \mathscr{F} \{ a\} * \mathscr{F} \{b\}
+\end{equation}
+
+
+\begin{equation}
+\mathscr{F} \{ a\} = \frac{1}{2} \delta(f_{x}, f_{y}) + \frac{m}{4} \delta(f_{x} + f_{0}, f_{y}) + \frac{m}{4} \delta(f_{x} - f_{0}, f_{y})
+\end{equation}
+
+ipotizzo $l=l_{x}=l_{y}$
+\begin{equation}
+\mathscr{F} \{ b\} = l^{2} sinc(l f_{x}) sinc(l f_{y})
+\end{equation}
+dovrò quindi trovare il prodotto di convoluzione dei due
+
+
+
+Si ricorda che fare il prodotto di convoluzione con una delta di dirac ad una certa frequenza significa traslare la funzione a tale di tale frequenza
+
+\begin{equation}
+\mathscr{F} \{ t(x_{1},y_{1})\} = l^{2} sinc(l f_{y}) \{		sinc(l f_{y}) +  \frac{m}{2} sinc(l (f_{x} + f_{0}))	+  \frac{m}{2} sinc(l (f_{x} - f_{0}))\}
+\end{equation}
+
+
+Facendo il modulo quadro trovo come scritto sopra l'intensità del campo. Noto che se $f_{0}$ è grande \textbf{ i doppi prodotti non si sovrappongono???????} e possono essere trascurati
+
+$f_{0}>>1$
+\begin{equation}
+I(x_{0},y_{0}) = (	\frac{l^{2}}{2 \lambda z}	)^{2}	sinc^{2}(\frac{l y_{0}}{ \lambda z}	)\{		sinc^{2}(\frac{l x_{0}}{ \lambda z}	)	+ \frac{m^{2}}{4} sinc^{2}(\frac{l (x_{0} + f_{0}) \lambda z}{ \lambda z}	)		+ \frac{m^{2}}{4} sinc^{2}(\frac{l (x_{0} - f_{0}) \lambda z}{ \lambda z}	)	\}
+\end{equation} 
+
+
+il numero di fenduiture è legato a $x_{0}$ la profondità a è legata a m(\textbf{cosa vuole dire????})
+
+ricordando(\textbf{che non ho scritto}) che l'apertura del lato centrale è 
+$\Delta x_{0}= \frac{2 \lambda z}{l}$ 
+
+troviamo affinchè tali lobi siano separati \textbf{?????}  (e quindi si possano trascurare i doppi prodotti) si deve avere $f_{0} \lambda z >\Delta x_{0} $ e quindi $f_{0}>\frac{2}{l}$
+
+Cosa vedo sul piano di Fraunhofer?
+
+vedo quindi un reticolo di diffrazione 
+
+È possibile ad una distanza ragionevole? Dalla distanza di Fraunhofer a una distanza praticabile?
+
+Forse si ma è necessario servirsi delle lenti
+
+Innanzitutto immaginiamo una \textbf{lente più grande del fronte d'onda incidente}
+
+l'unica azione che la lent può compiere sull'onda è sfasarla attraverso il passaggio nel materiale dielettrico e nell'aria
+
+$\Delta (x, y) $= cammino interno
+
+$\Delta_{0} - \Delta (x, y) $= cammino nell'aria
+\begin{equation}
+\Phi (x, y) = k n \Delta (x, y) + k [\Delta_{0} - \Delta (x, y)] = k \Delta_{0} + k \Delta (x,y) (n-1)
+\end{equation}
+
+$U_{l}'=U_{l} t(x,y) $
+
+con t(x, y) funzione di trasferimento della lente 
+
+$t(x,y) = e^{i \Phi (x,y)} = e^{i k \Delta_{0} + k \Delta (x,y) (n-1)}$
+
+$U_{l}'=U_{l} e^{i k \Delta_{0}} e^{i k \Delta (x,y) (n-1)} $
+
+ora dobbiamo determinare lo spessore della lente $\Delta (x,y)$ che dipende dai raggi di curvatura In approssimazione parassiale
+
+$\Delta(x,y) = \Delta_{0} - \frac{x^{2}+ y^{2}}{2}  (\frac{1}{R_{1}} -\frac{1}{R_{2}} )$
+
+La focale della lente è 
+$\frac{1}{f} = (n-1)(\frac{1}{R_{1}} -\frac{1}{R_{2}} )$
+
+\begin{equation}
+U_{l}'=U_{l} e^{i k n \Delta_{0}} e^{- i k \frac{x^{2}+ y^{2}}{2 f} } 
+\end{equation}
+
+mettiamo la lente in corrispondenza con l'apertura in modotale che le sue coordinate coincidano con quelle dell'apertura 
+
+momentaneamente tralasciamo il termine costante $e^{i k n \Delta_{0}}$ si ricongiungerà alla fine con il resto dell'equazione %in realtà l'abbiamo rapito%
+
+inseriamo ciò che abbiamo trovato ora nell'equazione (21)
+
+$
+U(x_{0}, y_{0})= \frac{1}{i \lambda z} e^{i k z}  \iint_{\infty}^{\infty} U(x_{1}, y_{1}) e^{\frac{k}{2z} [(x_{0}- x_{1})^{2} + (y_{0}- y_{1})^{2}]}dx_{1}dy_{1}
+$
+
+\begin{equation}
+U(x_{0}, y_{0})= \frac{1}{i \lambda z} e^{i k z}  \iint_{\infty}^{\infty} U_{l}  e^{- i k \frac{x^{2}+ y^{2}}{2 f} } e^{\frac{k}{2z} [(x_{0}- x_{1})^{2} + (y_{0}- y_{1})^{2}]}dx_{1}dy_{1}
+\end{equation}
+
+Ipotizzo f>0
+
+Se  ci poniamo a z = f i due esponenziali si semplificano
+
+ottengo
+
+\begin{equation}
+U(x_{f}, y_{f})= \frac{ e^{i k z}}{i \lambda z} e^{i \frac{k (x_{f}^{2} + y_{f}^{2})}{2f}} \iint_{\infty}^{\infty} U_{l}  e^{-i 		\frac{2\pi (x_{f} x + y_{f} y)}{\lambda f}		}dxdy
+\end{equation}
+
+
+indico con $f_{x} = \frac{x_{f}}{\lambda}$ e $f_{y} = \frac{y_{f}}{\lambda}$
+
+
+\textbf{ottengo quindi la stessa trasformata che prima trovavo nella regione di FRaunhofer ora in corrispondenza del fuoco della lente}
+
+\begin{equation}
+U(x_{f}, y_{f}) =  \frac{ e^{i k z}}{i \lambda z} e^{i \frac{k (x_{f}^{2} + y_{f}^{2})}{2f}} \mathscr{F} \{	U_{l}(x,y)	\} ( f_{x}, f_{y})
+\end{equation}
+
+
+Le lenti convergenti avvicinano la lunghezza di Fraunhofer a piccole distanze
+
+Vogliamo però la trasformata di Fourier esatta  e quindi lo spettro nel caso che tra l'apertura e la lente ci sia una certa distanza $d_{0}$
+
+
+
+definisco ora:
+
+$\mathscr{F} \{	U_{0}(x,y)	\} ( f_{x}, f_{y})  = F_{0}(f_{x}, f_{y})$
+
+che mi rappresenta lo spettro dell'onda piana di partenza
+
+Restando nel dominio di Fourier siamo in grado di trovare la trasformata in corrispondenza della lente dopo un tratto $d_{0}$ di propagazione libera
+\textbf{DOVE CAZZZO LO TROVO QUESTA COSA QUI????}
+
+$	\mathscr{F} \{	U_{l}(x,y)	\} ( f_{x}, f_{y}) 	F_{l}(f_{x}, f_{y}) = F_{0}(f_{x}, f_{y}) 	e^{		-i \frac{  k_{x}^{2} +  k_{y}^{2}}{2 k}	d_{0}} = F_{0}(f_{x}, f_{y}) 	e^{		-i \frac{ 4 \pi ^{2}}{2}     \frac{\lambda}{ 2 \pi}    (  f_{x}^{2} +  f_{y}^{2})	d_{0}}$
+
+e la sostituisco nell equazione (38) 
+
+\begin{equation}
+U_{f}(x_{f}, y_{f}) = \frac{       i \frac{k}{2 f} (     1- \frac{d_{0}}{f}  )(x_{f}^{2}+ y_{f}^{2})               }{i \lambda f} F_{0}(\frac{x_{f}}{\lambda_{f}}, \frac{y_{f}}{\lambda_{f}})
+\end{equation}
+
+
+nel caso particolare $d_{0}=f$
+
+\begin{equation}
+U_{f}(x_{f}, y_{f})=\frac{1}{ i \lambda f} F_{0}(\frac{x_{f}}{\lambda_{f}}, \frac{y_{f}}{\lambda_{f}})
+\end{equation}
+
+Significa che il termine quadratico che nasce dalla propagazione libera viene eliminato dalla presenza della lente a distanza $d_{0}$
+
+
+
+
+\subsection{elaborazione otticadel segnale}
+
+\textbf{NON HO CAPITO TROPPO BENE SPIEGARE MEGLIO}
+
+\textbf{SERVE IL DISEGNO QUI!!!}
+
+
+
+$\mathscr{F} \{ g(t)\}= G(f)$
+
+$\mathscr{F} \{h(t)\}  = H(f)$
+
+fequenza (\textbf{in che senso????})  G(f)H(f)
+
+tempi $     \int_{t}^{-\infty}      g(\tau) h(t- \tau) d\tau         $
+
+
+ \textbf{h(x,y) funzione di trasferimento del sistema}
+ogliamo spostare l'analisi in frequenza in analisi spaziale 
+
+Se anzichè g(t) in ingresso avessi una $\delta $ il sistema mi restituirebbe la stessa funzione h(t) 
+
+una $\delta$ fisicamente sarebbe una sorgente puntiforme che attraversa il sistema ottico mi da h(x,y)
+
+se nel piano dell'origine ho una distribuzione di campo estesa posso scomporla in tante sorgenti puntiformi in modo da avere nel piano d'arrivo la sovrapposizione delle funzioni h(x,y) prodott del sistema, traslata approssimativamete in base alla posizione della sorgente 
+
+il risultato sarà quindi un prodotto di convoluzione 
+
+\begin{equation}
+\int_{\infty}^{-\infty} g(x_{1}, y_{1})h(x-x_{1}, y-y_{1})dx_{1} dy_{1}
+\end{equation}
+
+Circuito ottico e elettrico sono quindi equivalenti(????????) tuttavia come si fa a produrre un sistema ottico che possa lavorare sul segnale?
+
+Si passa alle frequenze per poi antitrasfromare
+
+in ogni punto NON sappiamo quale è il contributo di ogni frequenza spaziale 
+
+possiamo porre una siapositiva opaca con alcuni punti trasparenti.
+Passeranno solo determinate??????????????????? frequenze spaziali 
+ e il raggio sarà monocromatico
+ 
+ ottengo così un nuovo spettro che possiamo ritrasformare
+ 
+-------------BHO-------------------
+
+
+
+
+\href{https://www.youtube.com/watch?v=F-S0T4xTdLY}{Video spiegazione }.  %<--------------------------------%
+
+
+Se il sistema ottico ha un apertura abbastanza grande, l'ottica geometrica funziona bene. L'ottica diffrattiva interviene quando le dimensioni dell'apertura (sono paragonabili con la lunghezza d'onda?????) hanno effetti diffrattivi rilevanti nel sistema
+
+siano $(x_{0}, y_{0})$  le coordinate dell'oggetto e $U_{0}(x_{0}, y_{0})$ il relativo campo elettromagnetico che viene trasformato fino ad arrivare al piano immagine del campo $U_{i}(x_{i}, y_{i})$. la relazione tra ingresso e uscita è lineare(essendo l'equazione di Helmotz lineare) 
+
+\begin{equation}
+U_{i}(x_{i}, y_{i})=\int_{-\infty}^{+\infty} U_{0}(x_{0}, y_{0})h(x_{i}, y_{i} ;x_{0},y_{0})dx_{0} dy_{0}
+\end{equation}
+
+CHE NOTAZIONE HA h????????????????????????????'
+
+
+Dove h() funzione di trasferimento del sistema che può essere spazialmente invariante(in regime parassiale lo è, ma non in generale)
+
+COSA VUOLE DIRE SPAZIALMENTE INVARIANTE????
+
+
+Se nel piano immagine abbiamo la riproduzione perfetta dell'oggetto la funzione h dovrà essere proporzionale a una $\delta$ 
+
+\begin{equation}
+h \propto \delta(x_{i} \pm M x_{0}, y_{i} \pm M y_{0})
+\end{equation}
+
+
+Se scomponiamo $U_{0}(x_{0}, y_{0})$ in tante sorgenti puntiformi l'integrale di sovrapposizione sarà un altro punto luminoso la cui posizone dipendereà da h(M) (dovrebbe essere traslato no?)
+
+Quando la risposta del sistea non è una $\delta$ (quindi tutti i casi reali)  spazio invariante non ho più la perfetta riproduzione dell'immagine
+
+Se l'apertura ha dimensioni finite troncherà il fronte d'onda dando origine a effetti di DIFFRAZIONE
+
+La funzione P(x,y) è detta pupilla della lente 
+
+
+$$
+P(x,y) =
+\begin{cases}
+1 $ dove la lente lascia passare la luce$ \\
+0 $ altrove$\\
+\end{cases}
+$$
+
+
+Scomponiamo il campo in ingresso in varie sorgenti puntiformi di onde sferiche che sarà possibile sovrapporre per formare il campo in uscita
+
+La risposta del sistema ottico e un punto sorgente mi da la funzione che l'onda sferica che parte dalla sorgente puntiforme che stiamo considerando il suo andamento di fase
+
+$\frac{e^{i k r}}{ i \lambda r}$
+
+Siamo in ottica parassiale 
+
+\begin{equation}
+r \approx [1 + \frac{1}{2} (\frac{x - x_{0}}{z})^{2}+ \frac{1}{2} (\frac{y - y_{0}}{z})^{2}]
+\end{equation}
+
+Il campo che mi arriva sulla lente sarà ($ r \approx z = d_{0}$)
+
+
+
+
+
+\begin{equation}
+U_{l}(x,y) =\frac{1}{i \lambda d_{0}} e^{i \frac{k}{2 d_{0}}  [(x-x_{0})^{2} +(y-y_{0})^{2}]}
+\end{equation}
+
+il campo dopo la lente sarà moltiplicato per le funzioni di trasmissione della lente composto dalla pupilla e dal termine di fase (ipotizzando sempre che la lente f>0)
+
+\begin{equation}
+U_{l}' (x,y)=U_{l}(x,y) P(x,y) e^{-i \frac{k}{2f}(x^{2}+y^{2})}
+\end{equation}
+
+per arrivare al piano $(x_{i}, y_{i})$ abbiamo un tratto z=$d_{0}$ di propagazione libera che andiamo a studiare con l'integrale di Fresnel
+
+\begin{equation}
+h(x_{i}, y_{i}; x_{0}, y_{0})= \frac{1}{ i \lambda d_{i}} \iint_{-\infty}^{\infty} U_{l}' (x,y) e^{i \frac{k}{2 d_{i}}[(x-x_{0})^{2} +(y-y_{0})^{2}]}dxdy
+\end{equation}
+
+
+sostituendo troviamo la funzione h
+
+\begin{equation}
+h= \frac{1}{\lambda^{2} d_{0} d_{i}} e ^{i \frac{k}{2 d_{i}}(x_{i}^{2}+y_{i}^{2})} e ^{i \frac{k}{2 d_{0}}(x_{0}^{2}+y_{}^{2})} \iint_{-\infty}^{\infty} P(x,y) e^{i \frac{k}{2}  (\frac{1}{d_{0}} + \frac{1}{d_{1}} - \frac{1}{f})(x^{2}+y^{2}) } e^{- i k [(\frac{x_{0}}{d_{0}} + \frac{x_{1}}{d_{1}} ) x + (\frac{y_{0}}{d_{0}} + \frac{y_{1}}{d_{1}} ) y]} dxdy
+\end{equation}
+
+
+per una ragione che non mi è facile comprendere 
+
+$\frac{1}{d_{0}}+ \frac{1}{d_{1}} - \frac{1}{f}$
+
+poniamo come condizione
+
+$M = \frac{d_{i}}{d_{0}}$
+
+\begin{equation}
+h= \frac{1}{\lambda^{2} d_{0} d_{i}} e ^{i \frac{k}{2 d_{i}}(x_{i}^{2}+y_{i}^{2})} e ^{i \frac{k}{2 d_{0}}(x_{0}^{2}+y_{}^{2})} \iint_{-\infty}^{\infty} P(x,y)  e^{- i k \frac{k}{d_{i}} [(M x_{0} + x_{i}) x + (M y_{0} + y_{i})y]} dxdy
+\end{equation}
+
+ricordando la (42)  e ricordando sempre che $ I \thicksim |U|$
+
+
+\textbf{in ottica diffrattiva un punto luminoso nel piano oggetto diventa una macchia nel piano immagine corrispondente alla trasformata di Fourier nell'apertura della lente la cui dimensione è inversamente proporzionale alla dimensione della pupilla}(più grande è la pupilla più piccolo sarà la macchia quindi l'immagine più chiara)
+
+
+A grandi linee è possibile approssimare :
+
+pupilla grande $\rightarrow \delta \rightarrow$ macchia puntiforme $\rightarrow$ ottica geometrica
+
+pupilla piccolo $\rightarrow$ macchi su tutto il piano immagine $\rightarrow$ ottica diffrattiva 
+
+\textbf{COME FACCIO A DIRE CHE È UN FILTRO??}
+La lente è quindi un filtro sulla frequenza spaziale del campo di partenza 
+
+l'effetto della pupilla in un sistema ottico in ottica diffrattiva è quello di un f\textbf{iltro passa basso per le frequenze spaziali} maggiori le dimensioni della pupilla più frequenze passano, più è precisa la riproduzione nel piano immagine
+
+Esempio: Telescopio
+
+ 
+\end{document}
+
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{corollary}[theorem]{Corollary} 
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{statement}[theorem]{Statement}
+\newtheorem{notation}[theorem]{Notation} 
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+
+
+%%%DATE enter the date of your submission here- best%%%
+%%%If \date{} is not used, the current date will be used%%%
+%%%Warning:This will be lost if your paper is recompiled on another day though%%%
+%%%\date{May 30, 2012}%%%%
+\date{June 22, 2012}
+
+%%%PUT YOUR DEFINITIONS HERE%%%
+%NDJFL uses \varphi by default; redefine only if you want \phi%%%
+
+\startlocaldefs
+%%% our macros for this article only %%%%
+\newcommand{\NDJFL}{\emph{NDJFL}}
+\newcommand{\Jo}{\emph{Journal}}
+\newcommand{\EM}{Editorial Manager}
+\newcommand{\origphi}{\phi}
+\newcommand{\CMS}{\emph{CMS}}
+\newcommand{\mn}{\medskip\noindent}
+\newcommand{\tietilde}{\char126\relax}
+
+\endlocaldefs
+
+\begin{document}
+
+\begin{frontmatter}
+
+  %% TITLE OF YOUR PAPER%%%
+  %% Words in title should begin with uppercase, except%%%
+  %%% articles (and, the, a), conjunctions (and, for, nor, but),
+  %%% prepositions (by, with, for, over, and so on)
+  \title{\emph{Style Guide for Submission of Manuscripts to}\\
+    \emph{Notre Dame Journal of Formal Logic}}
+  %%% Choose a short title to be used as the running head on
+  %%% odd-numbered pages%%%
+  %%% Use this same title as "short title" when you submit MS to
+  %%% EM%%%%
+  \runtitle{NDJFL Style Guide}
+
+  \author{\fnms{Martha} %first name
+    \snm{Kummerer}%last name
+    \corref{}%to denote who is the corresponding author
+    \ead[label=e1]{ndjfl@nd.edu}%author email, leave this [label] as is
+    \ead[label=u1,url]{http://ndjfl.nd.edu/}%%web page, leave this [label] as is
+  }
+  %%% ADDRESS NOTES
+  %%% Dept listed first, University/company second, street or PO box
+  %%% third%%%
+  %%% U.S. Postal Service guidelines request no punctuation in the
+  %%% street...country lines%%%
+  %%% Country should be all uppercase%%%%
+  \address{Department of Leisure\\
+    University of the World\\
+    123 Paradise Lane\\
+    Lost Island LI 45678\\
+    THE CARIBBEAN\\
+    \printead{e1}\\
+    \printead{u1} }%
+  \and%
+  \author{\fnms{Peter}
+    \snm{Cholak}\ead[label=e2]{cholak.1@nd.edu}}%increase label by
+  %	% one for each
+  %	% author
+  \address{Department of Mathematics\\
+    University of Notre Dame\\
+    Notre Dame IN 46556\\
+    USA\\
+    \printead{e2} }
+  % \and \author{\fnms{???} \snm{???}\ead[label=e3]{???}}
+  % \address{\printead{e3}} \affiliation{???}
+
+  %%%% INSERT EACH AUTHOR'S FIRST INITIAL AND SURNAME%%%%
+  \runauthor{M.~Kummerer and P.~Cholak}
+
+
+\begin{abstract}
+  This document and its \LaTeX\ source are meant as a guide to the
+  \emph{Notre Dame Journal of Formal Logic's (NDJFL)} style and the
+  style files \emph{ndjflart} and \emph{jflnat.bst}. The files will
+  explain the formatting of an article in ndjflart and will address
+  the style issues the \Jo\ prefers in the articles it publishes.  The
+  abstract should be a very brief summary of the article, that is, no
+  more than 150 words. It is lifted from the paper by indexing
+  services and therefore should not contain citations to works in the
+  \emph{References} nor should it contain author-created macros.
+  Limit maths and symbols to those that can be easily converted for
+  web reading.  The abstract should be in one block and not separated
+  into paragraphs.
+\end{abstract}
+
+\begin{keyword}[class=AMS]
+  \kwd[Primary ]{X001} \kwd{Y002} \kwd[; Secondary ]{Z003}
+\end{keyword}
+
+\begin{keyword}
+  \kwd{typesetting} \kwd{guide for authors}
+\end{keyword}
+
+\end{frontmatter}
+
+% main matter with bibliography goes here
+
+\section{How Should You Use This Style Guide?}\label{intro}
+The \emph{Notre Dame Journal of Formal Logic} welcomes your
+submission.  We publish original and significant work in all areas of
+logic and the foundations of mathematics.  Your prepared manuscript
+will be submitted and processed through
+\href{http://www.editorialmanager.com/ndjfl}{Editorial Manager}.
+Throughout the review process you can log in at any time and follow
+the progress of your manuscript.
+
+This guide will cover the preparation of your manuscript and details
+on our particular style.  Our hope is that you will use this style
+guide to help you typeset your paper.  No matter which documentclass
+you use in composing your paper, you can easily convert it to ndjflart
+using the suggestions in the template.  Hopefully this guide will
+prove useful whether you are converting a finished document to use
+ndjflart.cls, are in the middle of writing the paper, or are just
+beginning.
+
+At the very least, this guide describes the \NDJFL\ style. We reserve
+the right to edit your paper so it conforms to our style. If you read
+this, you will not be surprised when you receive your page proofs.
+
+
+\section{Frontmatter}\label{front}
+This guide uses the documentclass ``ndjflart'' which you can download
+from the\linebreak \href{http://ndjfl.nd.edu}{\NDJFL} website.  It
+also requires the artstatus argument ``am'' meaning ``author
+manuscript.''  When your paper is typeset, this term will be changed
+to incorporate the \Jo's fonts and settings.  You should not change
+this.
+
+
+\subsection{Fonts}\label{fonts} 
+Various options appear in the code at the beginning of this template
+which you can switch on or off for the fonts available to you.  The
+\NDJFL\ uses the MathTime{\tiny\texttrademark} Professional 2
+(MTPro2)%
+%
+\endnote{MathTime{\tiny\texttrademark} Professional 2 (MTPro2) fonts
+  are the product of Personal TeX, Inc., San Francisco, CA and
+  trademarked by them.}
+%
+fonts for publishing.  If you have them, you will know how to use them
+in this template.
+
+We have available the math alphabets mathcal, mathfrak, mathscr, and
+mathbb (e.g., $\mathcal{A}, \mathfrak{A}, \mathscr{A}, \mathbb{A}$).
+We use $\varphi$ by default so you do not need to redefine
+\verb=\phi=.  However, if you do need this $\origphi$ symbol
+throughout your paper, you will need to \verb=\renewcommand=.
+
+%%%% NOTA BENE %%%%%
+Developing your own font symbol is \emph{strongly discouraged}.  If
+you cannot find a symbol among the standard \LaTeX, amssymb, and
+mathrsfs symbols, try the packages stmaryrd, wasy2, or others found at
+\href{http://www.ctan.org}{ctan.org}.
+
+Our titles and section headings are in optima font.  Since most users
+do not have optima, your system will use helvetica.  When you have
+axioms or other items that need a list heading, you can use
+\verb=\subsection*= to create a nice flush left heading that will
+naturally occur in optima bold when we typeset your paper.  The
+following is an example of using this for a list heading.
+
+\subsection*{List of Our Axioms}
+
+\begin{tabbing}
+  A1\quad \= ABC\\
+  A2\> DEF
+\end{tabbing} 
+
+\subsection{Author macros}\label{macros} Load your macros in the
+special area between
+
+\mn \verb=\startlocaldefs= and
+
+\mn \verb=\endlocaldefs=.
+
+\mn If you ``input'' a special file containing your macros, be sure to
+include it when you are asked for source files upon acceptance of your
+paper.
+
+\subsection{Article data}
+
+\subsubsection{Title and runtitle}\label{tandr} The title of your paper should be
+printed in headline-style capitalization. In general, this means that
+the first and last word and all major words in the title and subtitle
+should be uppercase. Articles (an, the, a), conjunctions (and, nor,
+or, but), and prepositions (by, with, for, over) should be lowercase.
+See \emph{Chicago Manual of Style (CMS)}~\cite{CMS}, especially
+Chapter~8.157, ``Principles of headline-style capitalization,'' for
+more specific information and exceptional situations such as
+hyphenated words.  Keep maths to a minimum in titles.
+
+The \verb=\runtitle= should be your preferred shortened version of
+your title.  This is requested when you upload your paper to \EM\ (in
+the field called ``short title''). The editors may change this during
+the final stages of publishing.  Keep it short; it should not take up
+the whole width of the page.  This runtitle will appear on
+even-numbered pages.
+
+\subsubsection{Author(s)}\label{authordata} The \verb=\author{}= line
+includes the author's name (divided into first name (\verb=\fnms{}=)
+with middle initial, if desired, and surname (\verb=\snm{}=) and
+e-mail address.  It can also contain a web address, if desired.  A
+separate \verb=\author{}= is used for each additional author, but the
+\verb=\ead= label is changed to e2,u2 or e3,u3, as appropriate.
+
+On a separate line, the command \verb=\runauthor= contains the data
+that will appear as the running head on odd-numbered pages in the
+article.  Enter the initial(s) and surname of each author separated by
+``and.''  In a series of three or more authors the ``and'' is preceded
+by a comma. (e.g., J.~A.~Smith, S.~Jones, and R.~Miller).
+
+The \verb=\address= line contains the affiliation and address of each
+author.  The\linebreak \NDJFL\ uses the U.S. Postal Service format for
+addresses, that is, affiliation first, university/company second,
+street address third, city, state/province fourth, country last.
+Country is printed in all uppercase. No punctuation should be used in
+the street, city, state lines except for the hyphen used in some
+countries' city codes.
+
+\subsection{Mathematics Subject Classification}\label{msc} 
+The \NDJFL\ prints primary and, if provided, secondary, classification
+codes for each article.  You can find the classification(s) for your
+article at
+\href{http://www.ams.org/mathscinet/freeTools.html}{ams.org}.  Choose
+one or more and divide them into primary and secondary, as
+appropriate.  You will be asked to list these codes when you upload
+your submission to
+\href{http://www.editorialmanager.com/ndjfl}{Editorial Manager}.
+
+\subsection{Keywords}\label{kwd} Please list several keywords
+representing the content of your article.  Be cautious when using
+symbols since they can be represented only as text in a search.  Don't
+use macros here. They won't mean anything when separated from the
+manuscript.
+
+
+\section{Sectioning}\label{secs} All sections in \NDJFL\ articles are
+numbered.  The opening of your article should be the first
+\verb=\section= and, if nothing else is appropriate, titled
+``Introduction.''  Section titles should be in headline-style capitalization (see Section~\ref{tandr}).  All sections should be labeled in the source code;
+that is, use ``\verb=\label{}='' with a selected key term.  You might
+have referred to ``the previous section'' or ``the final section'' in
+your text.  The copyeditors/typesetters may, however, want to set a
+link to those sections to facilitate the online edition.  It helps to
+have labels already keyed to these sections.
+
+
+\subsection{Acknowledgments}\label{ssecacks} The \Jo\ places
+acknowledgments in a special section at the end of the article
+following the References section.  It is an environment
+\verb=\begin{acks}...\end{acks}= and may contain any thanks you want
+to extend to individuals.  It is also the place to include information
+about grants and research data.  Whereas we don't use first names in
+the text of our articles, you may use full names here to thank people
+or to cite personal conversations that were used in the paper. This
+environment is the last code in the \LaTeX\ file before the
+\verb=\end{document}=.
+
+
+\subsection{Endnotes}\label{ssecnotes} The \NDJFL\ uses 
+endnotes%
+%
+\endnote{This is an endnote.} 
+rather than footnotes.%
+%
+\footnote{This is another.}
+%
+\kern.5ex  There is nothing special you
+need to do because your footnotes will automatically be placed in a
+section at the end of the article before the References section.  You
+should just be aware of this placement in case you refer to the
+location by page or direction in the text of your article.  Notes are
+also an appropriate place to cite personal conversations and thus full
+names of individuals can be used.
+
+Most of the time the note number should follow any punctuation,
+including closing quotation marks and closing parenthesis.  The
+exceptions are that it should precede an em dash, and it \emph{may}
+precede a closing parenthesis if the endnote applies to something in
+the parenthetical note.
+
+
+\section{Style Issues}\label{style} 
+
+The \NDJFL\ follows the \CMS\ for most style and grammatical issues.
+The \Jo\ also uses American English for publication so spellings and
+capitalization will be changed to reflect this style.  For copyediting
+issues we refer to \emph{Butcher's {C}opyediting}~\cite{copy}.  Some of the other styles issues that
+you should address, so they need not be changed in your manuscript
+during copyediting, follow.
+
+
+\subsection{Boldface}\label{ssecbf} We try to avoid the heaviness of excessive
+boldface, and thus we limit its use to titles and headings.  Instead
+of boldface for emphasizing text, any of the italic commands should be
+used.  For the same reasoning, we prefer any of the enumerated list
+labels---that is, (i), (ii) or 1., 2. or (a), (b)---instead of
+bullets.  If enumeration is not appropriate, a leading hyphen is still
+preferable to a black dot.
+
+
+\subsection{Dashes}\label{ssecdash} There are three types of dashes and
+each has a specific use.  The hyphen~(-), of course, is used to
+hyphenate words when compound words are formed.  The \Jo\ does not use
+hyphens or make open compounds with the most common prefixes, that is,
+\emph{anti, co, counter, hyper, meta, mid, multi, neo, non, pro,
+  pseudo, re, sub, super}.  See the \emph{Chicago Manual of
+  Style}~\cite{CMS}, particularly, Chapter 7, ``Spelling, Distinctive
+Treatment of Words, and Compounds'' for an extensive list and
+explanation of compounds and hyphenation.
+
+The en dash (formed with two dashes \verb=--=) is used as an ellipsis
+would be used to indicate a range or missing elements between the two
+ends.  Thus, it is used between page numbers (pp.~67--74) and dates
+1969--1973.  No space is added to either side of the en dash.
+
+The em dash (formed with three dashes \verb=---=) is used just as a
+pair of commas or parentheses would be used, that is, to offset text.
+No space---not even a tiny \verb=\,=---is left on either side of the em
+dash.
+
+
+\subsection{Latin phrases}\label{ssecLP} Our style does not italicize Latin phrases
+that are in general use and easily understood by the general reader of
+logic.  The phrases prima facie, ad hoc, a priori, et al., and per
+se, for example, are not italicized.  Phrases not in common usage and also other
+foreign language phrases should be italicized.
+
+
+\subsection{Latin abbreviations}\label{ssecLA} 
+
+The Latin terms ``i.e'' (id est, that is), ``e.g.'' (exempli gratia,
+for example), and ``viz.'' (videlicit or videre licet; namely, that is
+to say, as follows) are handled in specific ways in \NDJFL\
+manuscripts.  When used in the main text, their English equivalents
+should be used and thus are spelled out.  The terms are offset by
+commas if the phrase following the term is not an independent clause.
+If the term is used with two independent clauses, ``that is'' is
+preceded by a semicolon and followed by a comma.
+
+In \NDJFL\ manuscripts, the Latin abbreviations should be confined
+to parenthetical uses or notes and are always followed by a comma.
+However, if the parenthetical note is a complete sentence and the term
+is used at the beginning, it should be spelled out.  (For example, in
+this parenthetical explanation, ``E.g.'' is not used.)
+
+
+\subsection*{Punctuation of Latin abbreviations and English equivalents}
+
+\begin{tabbing}
+\quad\=The day went as expected; that is, the sun rose and the sun set.\\
+\>The day went as expected, that is, with the sun rising and setting.\\
+\>The day went as expected (i.e., the sun rising and setting).\\
+\>The day went as expected. (That is, the sun rose and the sun set.)
+\end{tabbing}
+
+\mn The abbreviation etc.\ (et cetera, and others of the same kind) is
+preceded and followed by a comma when it is the final item in a
+series. The equivalents ``and so forth'' and ``and so on'' are
+punctuated in the same way.  Of course, if etc.\ ends a sentence, it
+would not be followed by any other punctuation.  We prefer that you
+avoid the abbreviation in the text, or at least overusing it, though
+the term is acceptable in lists and tables, in notes, and within
+parentheses.
+
+
+\subsection{Ties}\label{ssecties} Most users of \LaTeX\ know 
+that a lowercase letter followed by a period needs a space modifier to
+prevent \TeX\ from treating it as the end of a sentence and allowing
+more space.  Mostly, the backslash \verb=\= is used to create this
+spacing.  In some instances, however, the tilde is more appropriate
+because it will tie the two elements together so they cannot be
+separated at the end of a line.  Thus, it is a good habit always to
+use p.\tietilde\ to tie page numbers to their label and
+cf.\tietilde\verb=\cite{}= so the citation number doesn't drop down to
+a new line.  In addition, it is always a good idea to tie \verb=\cite=
+and \verb=\ref= to their labels or the previous word (e.g.,
+Lemma\tietilde\verb=\ref{}=). \LaTeX\ does a pretty good, but not
+perfect, job on this.
+
+
+\subsection{Serial commas}\label{sseccommas} 
+
+When items in a series are separated by commas, with a conjunction
+joining the last two elements, the \Jo\ uses a comma before the
+conjunction. See \CMS~\cite[Chapter 6.18]{CMS}.
+
+
+\subsection*{Examples of serial comma use}
+
+\begin{tabbing}
+\quad\=``on a construction due to Bishop, Metakides, Nerode, and Shore~[14]...''~\cite{ghma09}\\
+\> ``a nonreductionist conception of logicism, a deflationary view of abstraction,\\
+\>\qquad and an approach to
+formal arithmetic...''~\cite{ant10}\\
+\> ``There are thus generators $g_{n_1}$, $g_{n_2}$, $g_{m_1}$, and
+$g_{m_2}$...''~\cite{cle09}\\
+\>``Then we also
+have $k_2 = n_1$, $\sigma_1 = \tau_2$, and $\sigma_2 = \tau_1$.''~\cite{cle09}
+\end{tabbing}
+
+
+\subsection{Labeling and cross-referencing}\label{sseclabel} 
+
+Please label and key all sections, equations, and figures as well as
+all theorems, lemmas, definitions, corollaries, and so forth, for
+possible referencing.  When your article becomes part of our online
+issue at \href{http://www.projecteuclid.org/ndjfl}{Project Euclid},
+readers will appreciate the convenience of following your paper with
+easy links.
+
+\section{Graphics and Tables}\label{gandt} 
+
+The best graphics, \emph{if} they can be created for your paper, are
+with \LaTeX's picture environment.  This is because we can incorporate
+our fonts in the figure and also because it
+``travels'' well.  We realize, though, that this is a limited option.
+Therefore, the next best choice for a reliable graphic is
+\verb=\usepackage{graphicx}= with a PDF file of the graphic for
+\verb=\includegraphics{}=.  This prints sharply and seamlessly and
+allows a scaling option for sizing your graphic to the optimal
+proportion for the \NDJFL\ page.
+
+When creating tables keep in mind the size of your table in relation
+to a journal-sized page.  Large tables must often be scaled to fit a
+journal page.  When this is done, the font size may be reduced to a
+point where the symbol is difficult to read or all the symbols and
+text are so close together that they are not distinct.
+
+
+\section{The AMS Packages}\label{ams}
+The style file ndjflart.cls loads amsmath, amsthm, and amssymb. With
+amsthm the standard environments, theorem, proof, lemma, corollary,
+lemma, and so on, are available.
+\verb=\begin{theorem}...\end{theorem}= (and likewise for the others
+listed) will typeset your environments in the proper font and spacing.
+The \verb=\begin{proof}...\end{proof}= will place %boldface
+%\optimabf{Proof} 
+``Proof'' at the left margin in proper font and spacing, then list the
+text of the proof and conclude with our proof-ending symbol~$\square$
+at the right margin. The command \verb=\noeop= ends a proof
+environment without a $\square$ when necessary.  If intermediate
+proof-ending symbols are needed (proofs within a proof), the
+\verb=$\dashv$= ($\dashv$) should be used.
+
+\begin{definition}
+  This is a theorem.
+\end{definition}
+
+\begin{proof}
+  Here is the proof. 
+\end{proof}
+
+
+\section{References}\label{refs} 
+
+Check the References section at the end of this paper for the format
+of our references.  We use ``works cited'' as our basis so each item
+listed in your bibliography should be cited somewhere in the
+manuscript.  The best way to create a bib file that will work with
+jflnat.bst and produce our style of reference page is to enlist the
+help of MathSciNet or Zentralblatt MATH.  Use the Bib\TeX\ listing from
+your search at either site.  Go to the alternate site to capture its
+number so that you have included both \mbox{MRNUMBER} and ZBLNUMBER.
+Then, with \verb=\bibliographystyle{jflnat}=, you can create a
+complete set of citations that will greatly speed up the typesetting
+process.
+
+Keep in mind that web page citations may not be useful in the long
+life of your paper.  If you do use them, put the web address in the
+reference material and not in the text of the paper nor in endnotes.
+We prefer using \verb=\href= rather than \verb=\url=.
+
+
+\section{White Space}\label{whitesp}
+
+\NDJFL\ uses a block style and eliminates as much white space as
+possible. Limiting white space helps in the overall appearance of your
+pages if they are published.  Avoid using \verb=\bigskip= and
+\verb=\vspace= and scattering \verb=\,=s all through your formulas.  Trust
+\LaTeX\ and the style file you are using. The spacing will change when
+the paper is typeset with \NDJFL's fonts, so there is little need to
+fix the spacing except in the final version.
+
+\begin{thebibliography}{5}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\def\docolon{:}
+\def\eatcomma#1{}
+\def\onlyone#1{\gdef\oneletter{#1}}
+\def\sphref#1#2{{\let\#=\docolon\xdef\one{#1}}\href{\one}{#2}}
+\def\zhref#1,#2{{\let\#=\docolon\xdef\one{#1}}\href{\one}{#2}}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+\newcommand{\enquote}[2]{``#1,''}
+
+\bibitem[Antonelli(2010)]{ant10}
+Antonelli, G.~A.,
+\newblock \enquote{Numerical abstraction via the {F}rege quantifier},
+\newblock {\em Notre Dame Journal of Formal Logic}, vol.~51 (2010),
+  pp.~161--179.\eatcomma.
+  \zhref{http://www.emis.de/cgi-bin/MATH-item?1205.03055}, {\hbox{Zbl
+  1205.03055}}.
+  \sphref{http://www.ams.org/mathscinet-getitem?mr=2667904}{\hbox{MR 2667904}}.
+
+\bibitem[Butcher(1981)]{copy}
+Butcher, J.,
+\newblock {\em Butcher's {C}opyediting: {T}he {C}ambridge {H}andbook for
+  {E}ditors, {C}opyeditors and {P}roofreaders}, 4th edition,
+\newblock Cambridge University Press, Cambridge, 1981.
+
+\bibitem[Clemens(2009)]{cle09}
+Clemens, J.~D.,
+\newblock \enquote{Isomorphism of homogeneous structures},
+\newblock {\em Notre Dame Journal of Formal Logic}, vol.~50 (2009),
+  pp.~1--22.\eatcomma. \zhref{http://www.emis.de/cgi-bin/MATH-item?1188.03031},
+  {\hbox{Zbl 1188.03031}}.
+  \sphref{http://www.ams.org/mathscinet-getitem?mr=2536697}{\hbox{MR 2536697}}.
+
+\bibitem[Gherardi and Marcone(2009)]{ghma09}
+Gherardi, G. \unskip, and  A.~Marcone,
+``How incomputable is the separable {H}ahn-{B}anach theorem?''
+{\em Notre Dame Journal of Formal Logic}, vol.~50 (2009),
+  pp.~393--425.\eatcomma.
+  \zhref{http://www.emis.de/cgi-bin/MATH-item?1223.03052}, {\hbox{Zbl
+  1223.03052}}.
+  \sphref{http://www.ams.org/mathscinet-getitem?mr=2598871}{\hbox{MR 2598871}}.
+
+\bibitem[of~Chicago Press~Staff(2010)]{CMS}
+University of~Chicago Press~Staff, editors,
+\newblock {\em The Chicago Manual of Style}, 16th edition,
+\newblock The University of Chicago Press, Chicago, 2010.
+
+\end{thebibliography}
+
+
+%\bibliographystyle{jflnat} 
+%\bibliography{GTA}
+
+%%% ACKNOWLEDGMENTS= your personal comments and thanks %%%
+\begin{acks}
+  We are grateful to all authors for the advice we are presenting herein which
+  has been learned through experience over a number of years.  In addition, we thank
+  the editors of the clear and comprehensive \emph{Chicago Manual of
+    Style}.  We also express our thanks to the AMS and Zentralblatt
+  MATH for the use of their Bib\TeX\ formats in our bibliography
+  files.  Good luck with your submission!
+\end{acks}
+
+\end{document}
+
+
+%%%%%%%%%%%%%GTA.bib%%%%%%%%%%
+@book{CMS,
+	EDITOR = {University of Chicago Press Staff},
+	TITLE = {The Chicago Manual of Style},
+	PUBLISHER = {The University of Chicago Press},
+	ADDRESS = {Chicago},
+	YEAR  = {2010},
+	EDITION = {16th}
+}
+
+@book{copy,
+	TITLE = {Butcher's {C}opyediting: {T}he {C}ambridge {H}andbook for {E}ditors, {C}opyeditors and {P}roofreaders},
+	AUTHOR = {Judith Butcher},
+	PUBLISHER = {Cambridge University Press},
+	ADDRESS = {Cambridge},
+	YEAR = {1981},
+	EDITION = {4th}
+}
+
+@article{ghma09,
+	AUTHOR = {Gherardi, Guido and Marcone, Alberto},
+	TITLE = {How incomputable is the separable {H}ahn-{B}anach theorem?},
+	JOURNAL = {Notre Dame Journal of Formal Logic},
+	VOLUME = {50},
+	YEAR = {2009},
+	NUMBER = {4},
+	PAGES = {393--425},
+	ISSN = {0029-4527},
+	MRCLASS = {03F60 (03B30 46A22 46S30)},
+	MRNUMBER = {2598871},
+	MRREVIEWER = {Klaus Weihrauch},
+	ZBLNUMBER = {1223.03052}
+}
+       
+@article{ant10,
+	AUTHOR = {Antonelli, G. Aldo},
+	TITLE = {Numerical abstraction via the {F}rege quantifier},
+	JOURNAL = {Notre Dame Journal of Formal Logic},
+	VOLUME = {51},
+	YEAR = {2010},
+	NUMBER = {2},
+	PAGES = {161--179},
+	ISSN = {0029-4527},
+	MRCLASS = {03C80},
+	MRNUMBER = {2667904},
+	ZBLNUMBER = {1205.03055}
+}
+
+@article{cle09,
+	AUTHOR = {Clemens, John D.},
+	TITLE = {Isomorphism of homogeneous structures},
+	JOURNAL = {Notre Dame Journal of Formal Logic},
+	VOLUME = {50},
+	YEAR = {2009},
+	NUMBER = {1},
+	PAGES = {1--22},
+	ISSN = {0029-4527},
+	MRCLASS = {03E15 (03C15 03C50)},
+	MRNUMBER = {2536697},
+	MRREVIEWER = {Barbara Majcher-Iwanow},
+       ZBLNUMBER = {1188.03031}
+}
