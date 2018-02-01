@@ -3,6 +3,7 @@
 \usepackage[a4paper, total={15cm, 25cm}]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{empheq}
 \usepackage[most]{tcolorbox}
 \newtcbox{\eqbox}[1][]{%
@@ -97,7 +98,7 @@ Poniamo $n=\frac{n_2}{n_1}$ con $n_1$ l'indice di rifrazione del mezzo da cui si
 \begin{description}
 \item [TE]
 \begin{equation*}
-r = \frac{E_{0r}}{E_0i} = \frac{\cos \theta_i - n \cos \theta_t}{\cos \theta_i + n \cos \theta_t}
+r = \frac{E_{0r}}{E_{0i}} = \frac{\cos \theta_i - n \cos \theta_t}{\cos \theta_i + n \cos \theta_t}
 \end{equation*}
 applicando Pitagora e la legge di Snell
 \begin{equation}
@@ -122,14 +123,14 @@ Analogamente definiamo i coefficienti di trasmissione t.
 \begin{description}
 \item [TE]
 \begin{equation*}
-t = \frac{E_{0t}}{E_0i}
+t = \frac{E_{0t}}{E_{0i}}
 \end{equation*}
 \begin{empheq}[box=\eqbox]{equation}\label{equation:te_t}
 t = \frac{2\cos \theta_i }{\cos \theta_i + \sqrt{n^2 - \sin^2 \theta_i}}
 \end{empheq}
 \item [TM]
 \begin{equation*}
-t = \frac{E_{0t}}{E_0i}
+t = \frac{E_{0t}}{E_{0i}}
 \end{equation*}
 \begin{empheq}[box=\eqbox]{equation}\label{equation:tm_t}
 t = \frac{2n \cos \theta_i }{n^2 \cos \theta_i + \sqrt{n^2 - \sin^2 \theta_i}}
@@ -274,17 +275,17 @@ All'interno dello stesso mezzo l'ampiezza rimane invariata ma può presentarsi u
 \end{equation}
 Da cui abbiamo che:
 \begin{equation}
-E_{i2} = E_{t1} e^{-i \delta} \qquad E_{i1} = E_{r1} e^{i \delta}
+E_{i2} = E_{t1} e^{i \delta} \qquad  E_{r2} = E_{i1} e^{-i \delta}
 \end{equation}
 Sostituiamo nella equazioni \eqref{} e \eqref{} ottenendo
 \begin{equation}
-E_{t1} = \frac{\gamma_1 E_b + B_b}{2 \gamma_1}e^{i\delta} \qquad E_{i1} = \frac{\gamma_1 E_b - B_b}{2 \gamma_1}e^{-i\delta}
+E_{t1} = \frac{\gamma_1 E_b + B_b}{2 \gamma_1}e^{-i\delta} \qquad E_{i1} = \frac{\gamma_1 E_b - B_b}{2 \gamma_1}e^{+i\delta}
 \end{equation}
 Utilizzando le identità $\cos \delta = \frac{e^{i\delta} + e^{-i\delta}}{2}$ e $\sin \delta = \frac{e^{i\delta} - e^{-i\delta}}{2i}$ si ha:
 \begin{equation}
 \begin{cases}
-E_a = E_b \cos \delta + B_b(i\frac{\sin \delta}{\gamma_1}) \\
-B_a = E_b(i \gamma_1 \sin \delta) + B_b \cos \delta
+E_a = E_b \cos \delta + B_b(-i\frac{\sin \delta}{\gamma_1}) \\
+B_a = E_b(-i \gamma_1 \sin \delta) + B_b \cos \delta
 \end{cases}
 \end{equation}
 In forma vettoriale:
@@ -332,7 +333,7 @@ B_b
 Questa relazione è molto utile perché quello che ci interessa fare è calcolare la riflessione e la trasmissione dell'intera struttura.\\
 Calcoliamo quindi i coefficienti di riflessione e trasmissione per il caso precedente (substrato + film).
 \begin{empheq}[box=\eqbox]{equation}
-r = \frac{\gamma_0 m_{11} + \gamma_0 \gamma_sm_{12} - m_21 - \gamma_{22}}{\gamma_0 m_{11} + \gamma_0 \gamma_s m_{12} + m_{21} + \gamma_s m_{22}}
+r = \frac{\gamma_0 m_{11} + \gamma_0 \gamma_sm_{12} - m_{21} - \gamma_s m_{22}}{\gamma_0 m_{11} + \gamma_0 \gamma_s m_{12} + m_{21} + \gamma_s m_{22}}
 \end{empheq}
 \begin{empheq}[box=\eqbox]{equation}
 t = \frac{2 \gamma_0}{\gamma_0 m_{11} + \gamma_0 \gamma_s m_{12} + m_{21} + \gamma_s m_{22}}
@@ -399,8 +400,8 @@ Per avere riflettività nulla si deve avere $n_0 n_2^2 - n_s n_1^ = 0$ ovvero $\
 Consideriamo ora tre strati antiriflesso a \textit{lambda quarti} di spessore: $d_i = \frac{\lambda_0}{4n_i}$ con indici di rifrazione basso, alto, basso rispettivamente e scriviamo la matrice equivalente del sistema ottico:
 \[
 M_{tot} = M_1 M_2 M_3 = \left| \begin{array}{cc}
-0 & -\frac{\gamma_2}{\gamma_1} \\
--\frac{\gamma_1}{\gamma_2} & 0
+0 & i\frac{\gamma_2}{\gamma_1 \gamma_3} \\
+i\frac{\gamma_1 \gamma_3}{\gamma_2} & 0
 \end{array} \right|
 \]
 Sostituendo nella formula del coefficiente di riflessione si ottiene che la riflettività è nulla per $\frac{n_1 n_3}{n_2} = \sqrt{n_0 n_s}$.
@@ -412,23 +413,23 @@ In particolare consideriamo una serie di N coppie di strati ognuna composta da u
 Ogni coppia può essere descritta attraverso la seguente matrice:
 \begin{equation*}
 M_{HL} = M_H M_L = \left| \begin{array}{cc}
-0 & -\frac{\gamma_2}{\gamma_1} \\
--\frac{\gamma_1}{\gamma_2} & 0
+0 & -\frac{i}{\gamma_H} \\
+-i\gamma_H & 0
 \end{array} \right|
 \left| \begin{array}{cc}
-0 & -\frac{\gamma_2}{\gamma_1} \\
--\frac{\gamma_1}{\gamma_2} & 0
+0 & -\frac{i}{\gamma_L} \\
+-i\gamma_L & 0
 \end{array} \right|
 = \left| \begin{array}{cc}
-0 & -\frac{\gamma_2}{\gamma_1} \\
--\frac{\gamma_1}{\gamma_2} & 0
+-\frac{\gamma_L}{\gamma_H} & 0\\
+0 & -\frac{\gamma_H}{\gamma_L}
 \end{array} \right|
 \end{equation*}
 Nel suo complesso, il sistema ottico può essere descritto da:
 \begin{equation}
 M_{tot} = \left| \begin{array}{cc}
-0 & -\frac{\gamma_2}{\gamma_1} \\
--\frac{\gamma_1}{\gamma_2} & 0
+-\frac{\gamma_L}{\gamma_H} & 0\\
+0 & -\frac{\gamma_H}{\gamma_L}
 \end{array} \right|^N
 \end{equation}
 Ricaviamo il coefficiente di riflessione:
@@ -439,4 +440,140 @@ e la riflettività:
 \begin{equation*}
 R = \left[\frac{(\frac{n_0}{n_s})(\frac{n_L}{n_H})^{2N} - 1}{(\frac{n_0}{n_s})(\frac{n_L}{n_H})^{2N} + 1}\right]^2
 \end{equation*}
+
+\section{Interferometri}
+\subsection{Relazioni di Stokes}
+Riprendiamo il caso di un'onda incidente all'interfaccia tra due materiali con indice di rifrazione $n_1$ e $n_2$ rispettivamente. L'ampiezza dell'onda incidente che indicheremo con $E_i$ verrà separata in un'onda riflessa e in un'onda trasmessa di ampiezze $rE_i$ e $tE_i$ ciascuna con r e t i coefficienti di riflessione e trasmissione.
+\begin{equation*}
+r = \frac{E_r}{E_i} \qquad t = \frac{E_t}{E_i}
+\end{equation*}
+Applichiamo il principio di reversibilità dei raggi e consideriamo due onde incidenti, una corrispondente all'onda riflessa nel caso precedente e l'altra corrispondente all'onda trasmessa nel caso precedente. Per l'onda incidente dal mezzo 1 al mezzo 2 si avrà anche in questo caso una separazione in due onde. Quella riflessa avrà ampiezza $r'rE_i$, quella trasmessa $t'rE_i$. Analogamente per l'onda incidente dal mezzo 2 al mezzo 1 si ha un'onda riflessa di ampiezza $r^2E_i$ e una trasmessa di ampiezza $trE_i$.\\
+Mettendo in relazione i due casi si ottiene:
+\begin{equation*}
+\begin{cases}
+E_i = t'tE_i + r^2E_i = (t't + r^2)E_i \\
+0 = r'tE_i + rtE_i = (r' + r)tE_i
+\end{cases}
+\end{equation*}
+Da cui si ricavano le \textbf{Relazioni di Stokes}:
+\begin{equation}
+\begin{cases}
+t' t + r^2 = 1\\
+r' = -r
+\end{cases}
+\end{equation}
+
+\subsection{Interferometro di Fabry-Perot}
+Consideriamo ora due superfici parallele sulle quali viene fatta incidere un'onda ad un certo angolo $\theta_0$. Su entrambe le superfici si avranno riflessioni e trasmissioni multiple come mostrato in figura.
+\begin{figure}[H]
+\includegraphics[width=8cm]{images/interf_facce_piane.png}
+\centering
+\end{figure}
+\noindent
+Cerchiamo di trovare $E_{r,tot}$. Tutti i raggi riflessi alla prima interfaccia presentano una differenza di fase dovuta dal diverso cammino ottico.
+\begin{equation*}
+\Delta = \frac{2d}{\cos \theta_t} n_f [1 - \sin^2 \theta_t]
+\end{equation*}
+\begin{empheq}[box=\eqbox]{equation}
+\Delta = 2d n_f \cos \theta_t
+\end{empheq}
+Da cui si ricava la differenza di fase $\delta = k\Delta$:
+\begin{empheq}[box=\eqbox]{equation}
+\overline{\delta} = \frac{4\pi}{\lambda_0} d n_f \cos \theta_t
+\end{empheq}
+Con la convenzione $\overline{\delta} = 2 \delta = 2 \cdot \frac{2\pi}{\lambda_0} d n_f \cos \theta_t$.
+Se l'onda incidente è $E_0$ allora le onde riflesse saranno:
+\begin{equation*}
+\begin{split}
+& E_1 = rE_0 e^{i\overline{\delta}} \\
+& E_2 = tt'r'E_0 e^{i\overline{\delta}}\\
+& E_3 = tt'r'^3 E_0 e^{i2\overline{\delta}}\\
+& E_4 = tt'r'^5 E_0 e^{i3\overline{\delta}}\\
+& \qquad ...
+\end{split}
+\end{equation*}
+Guardando le equazioni precedenti attentamente si può notare come esse possano essere riassunte nella forma
+\begin{equation*}
+E_N = tt'r'^{(2N-3)} E_0 e^{i(N-1)\overline{\delta}} \qquad \forall N > 1
+\end{equation*}
+Questa espressione non vale per il termine $N = 1$ in quanto l'onda in questione non attraversa mai l'interfaccia.\\
+Quindi possiamo riassumere il discorso calcolando l'onda riflessa complessiva.
+\begin{equation*}
+E_{r,tot} = rE_0 + \sum_{N=2}^\infty tt'r'^{2N-3} E_0 e^{i(N-1)\overline{\delta}}
+\end{equation*}
+Raccogliamo $E_0$ ed estraiamo un $r' e^{i\overline{\delta}}$ dalla sommatoria.
+\begin{equation*}
+E_{r,tot} = E_0 \left[r + (tt'r'e^{i\overline{\delta}}) \sum_{N=2}^\infty r'^{2N-4} E_0 e^{i(N-2)\overline{\delta}} \right]
+\end{equation*}
+Ora possiamo effettuare la sostituzione $x = r'^2 e^{i\overline{\delta}}$ enotare che la si tratta di una serie geometrica $\sum_{N=2}^\infty x^{N-2}$ la quale per $|x| < 1$ converge a $\frac{1}{1-x}$.\\
+Riscriviamo sostituendo la sommatoria e sfruttando le relazioni di Stokes:
+\begin{equation*}
+E_{r,tot} = E_0 \left[r - \frac{(1-r^2)r e^{i\overline{\delta}}}{1 - r^2 e^{i\delta}} \right]
+\end{equation*}
+Sostituendo le superfici parallele considerate con 2 lamine di vetro si costruisce un interferometro di Fabry-Perot per cui valgono le considerazioni fatte fino ad ora.\\
+Calcoliamo ora la riflettività.
+\begin{equation*}
+R_{tot} = \left| \frac{E_{r,tot}}{E_0} \right|^2 = \frac{2R(1 - \cos \overline{\delta})}{1 + R^2 -2R \cos \overline{\delta}}
+\end{equation*}
+con R riflettività della superficie.\\
+Dalla riflettività si può calcolare la trasmittività $T_{tot} = 1 - R_{tot}$
+\begin{equation}
+T_{tot} = \frac{1}{1 + \frac{4R \sin^2 \frac{\overline{\delta}}{2}}{1-R^2}}
+\end{equation}
+Definiamo coefficiente di \textit{finesse}
+\begin{empheq}[box=\eqbox]{equation}
+F = \frac{4R}{(1-R)^2}
+\end{empheq}
+Da cui si trova la trasmittività dell'interferometro di Fabry-Perot
+\begin{empheq}[box=\eqbox]{equation}
+T_{tot} = \frac{1}{1 + F \sin^2 \frac{\overline{\delta}}{2}}
+\end{empheq}
+La quale è massima quando $\sin^2 \frac{\overline{\delta}}{2} = 0$ ovvero quando $\overline{\delta} = 2m\pi$ e minima quando $\overline{\delta} = (2m+1)\pi$ e $F \rightarrow +\infty$.\\
+Definiamo \textit{free spectral range} la distanza tra un picco d'interferenza di ordine $m$ e di ordine $m+1$. In particolare:
+\begin{equation*}
+\Delta \nu_{fsr} = \nu_{m+1} - \nu_m = \frac{(m+1)c}{2n_fd} - \frac{mc}{2n_fd} = \frac{c}{2n_fd}
+\end{equation*}
+\begin{empheq}[box=\eqbox]{equation}
+\Delta \nu_{fsr} = \frac{c}{2n_fd}
+\end{empheq}
+Definiamo inoltre lo spessore a mezza altezza di un picco $\Delta \overline{\delta}_c$. Ovvero quando $t=\frac{1}{2}$ il ché accade per $\sin^2 \frac{\overline{\delta}_c}{2} = \frac{1}{\sqrt{F}}$. Siccome F è molto grande possiamo approssimare e dire che $\Delta \overline{\delta}_c = \frac{4}{\sqrt{F}}$. In termini della frequenza:
+\begin{empheq}[box=\eqbox]{equation}
+\Delta \nu_c = \frac{c}{\pi \sqrt{F}n_fd}
+\end{empheq}
+Definiamo infine la \textit{finesse} (diversa dal coefficiente di Finesse)
+\begin{empheq}[box=\eqbox]{equation}
+\mathcal{F} = \frac{\Delta \nu_{fsr}}{\Delta \nu_c} = \frac{\pi}{2} \sqrt{F}
+\end{empheq}
+Un buon interferometro ha $\Delta \nu_{fsr}$ larghe e $\Delta \nu_c$ strette (alti valori di $F$). La finesse è limitata dalla rugosità delle superfici utilizzate.Infatti un'indeterminazione nello spessore della superficie genera un'indeterminazione nello sfasamento.
+\begin{equation*}
+\Delta d = \frac{\lambda}{M}
+\end{equation*}
+Questa relazione indica la qualità di una superficie definita in funzione della lunghezza d'onda. Più M è grande migliore è la superficie.
+\begin{equation*}
+\Delta \overline{\delta}_{\text{non planare}} = \frac{4\pi}{\lambda} \Delta d = \frac{4\pi}{M}
+\end{equation*}
+\begin{equation*}
+\Delta \overline{\delta}_c = \frac{4}{\sqrt{F}}
+\end{equation*}
+\begin{equation*}
+\Delta \overline{\delta}_\text{non planare} > \Delta \overline{\delta}_c
+\end{equation*}
+\begin{equation}
+\mathcal{F} = \frac{\Delta \nu_{fsr}}{\Delta \nu_c} = \frac{\Delta \overline{\delta}_{fsr}}{\Delta \overline{\delta}_\text{non planare}} = \frac{2\pi}{\frac{4\pi}{M}} = \frac{M}{2}
+\end{equation}
+Se $M=100$, il massimo valore di finesse possibile è $\mathcal{F} = 50$.
+
+\subsubsection{Interferometro di Fabry-Perot come analizzatore di spettro}
+Consideriamo un sistema ottico composto da due supporti ottici piani paralleli con uno strato antiriflesso sui lati interni e la possibilità di modificare la distanza tra questi.\\
+Muovendo gli specchi.
+\begin{empheq}[box=\eqbox]{equation}
+R = \frac{\lambda}{\Delta \lambda_{min}}
+\end{empheq}
+
+\subsection*{Interferometro di Michelson}
+\subsection*{Variazioni dell'interferometro di Michelson}
+\subsubsection*{Interferometro di Twyman-Green}
+\subsubsection*{Interferometro di Mach-Zender}
+
+
 \end{document}
